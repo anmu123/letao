@@ -28,6 +28,9 @@ $(function () {
                         max: 6,
                         message: '用户名长度必须在3到6之间'
                     },
+                    callback: {
+                        message: '用户名错误'
+                    }
 
                 }
             },
@@ -43,6 +46,9 @@ $(function () {
                         max: 12,
                         message: '用户名长度必须在6到12之间'
                     },
+                    callback: {
+                        message: '密码错误'
+                    }
 
                 }
             },
@@ -54,7 +60,7 @@ $(function () {
 
 
 
-
+    // 表单注册校验成功的事件
     $(".form").on('success.form.bv', function (e) {
         e.preventDefault();
         //使用ajax提交逻辑
@@ -65,10 +71,20 @@ $(function () {
             data:$(".form").serialize(),
             success:function(info){
                 if(info.error === 1000){
-                    alert('用户名错误')
+
+                    // 调用 updateStatus 把 username 改成失败状态
+                    // 参数1: 修改哪个字段
+                    // 参数2: 修改的状态
+                    // 参数3: 指定显示哪个错误信息
+                    $('.form')
+                    .data('bootstrapValidator')
+                    .updateStatus('username', 'INVALID', 'callback')
                 }
                 if(info.error === 1001){
-                    alert('密码错误')
+                    // alert('密码错误')
+                    $('.form')
+                    .data('bootstrapValidator')
+                    .updateStatus('password','INVALID',"callback")
                 }
                 if(info.success){
                    location.href = 'index.html'
@@ -77,6 +93,15 @@ $(function () {
         })
     })
 
+    // 重置表单
+    // console.log($('[type=reset]'));
+    
+    $('[type=reset]').on('click',function(){
+
+        $('.form').data('bootstrapValidator').resetForm(true);
+
+
+    })
     
 
 

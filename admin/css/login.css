@@ -1,6 +1,9 @@
 body{
     background: linear-gradient(to right , pink ,skyblue);
 }
+.bg_login_head{
+    background: linear-gradient(to right , rgb(224, 66, 118),purple,skyblue);
+}
 .mt_150{
     margin-top: 150px;
 }
