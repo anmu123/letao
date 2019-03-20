@@ -4,6 +4,7 @@ $(function(){
     $('.category').on('click',function(){
         $(this).next().stop().slideToggle();
     })
+    
 
     // 左边菜单的显示和隐藏
     $('.lt_main .topbar .left').click(function(){
