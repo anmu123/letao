@@ -21,7 +21,7 @@ $(function(){
     })
     
     // 给确定按钮注册事件
-    $('.confirm').click(function(){
+    $('.confirm').click(function(){                                                                           
 
         // 参数1 : 直接就是url地址
         // 参数2 : 可选的data
