@@ -17,6 +17,11 @@ ul {
   padding: 0;
   list-style: none;
 }
+th,
+td {
+  text-align: center;
+  vertical-align: middle !important;
+}
 /*左侧侧边栏*/
 .lt_aside {
   background-color: #222D32;

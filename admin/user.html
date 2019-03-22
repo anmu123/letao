@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/user.css">
 </head>
 
 <body>
@@ -54,22 +55,46 @@
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li><a href="index.html">管理系统</a></li>
-               
+
                 <li class="active">用户管理</li>
             </ol>
 
 
 
         </div>
+        <!-- 表格 -->
+        <div class="lt_content container-fluid">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td>用户名</td>
+                        <td>手机号</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- 留坑 -->
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- 分页 -->
+            <div class="text-right">
+                <ul id="paginator"></ul>
+            </div>
+        
 
 
 
     </div>
 
 
-
-
-    <!-- 模态框 -->
+    <!-- 用户退出模态框 -->
     <!-- Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -79,7 +104,7 @@
                     <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
                 </div>
                 <div class="modal-body">
-                    <span class="glyphicon glyphicon-info-sign"></span> 您确定要退出后台管理系统吗？
+                    <span class="glyphicon glyphicon-info-sign"></span> 你确定要退出吗？
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -89,14 +114,59 @@
         </div>
     </div>
 
+    <!-- 用户提示启用或禁用模态框 -->
+    <!-- Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <span class="glyphicon glyphicon-info-sign"></span> 你确定要执行此操作吗？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary update">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/user.js"></script>
+
+    <!-- 表格模板引擎 -->
+    <script type="text/html" id="user_tpl">
+        {{each rows v i}}
+        <tr>
+            <td>{{(page-1) * size+i + 1}}</td>
+            <td>{{v.username}}</td>
+            <td>{{v.mobile}}</td>
+            <td>{{v.isDelete === 1 ? '正常' : '禁用'}}</td>
+            <td data-id = "{{v.id}}">
+                {{if v.isDelete == 1}}
+                <button class="btn btn-danger">禁用</button>
+                {{else}}
+                <button class="btn btn-success">启用</button>
+                {{/if}}
+            </td>
+           
+        </tr>
+        {{/each}}
+
+   
+
+
+    </script>
 </body>
 
 </html>

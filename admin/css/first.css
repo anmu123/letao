@@ -1,0 +1,5 @@
+.table.table-bordered tr,
+.table.table-bordered td,
+.table.table-bordered th {
+  text-align: center;
+}

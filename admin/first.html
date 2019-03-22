@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/first.css">
 </head>
 
 <body>
@@ -21,13 +22,13 @@
         </div>
         <!-- 头像 -->
         <div class="user">
-            <img src="./images/default.png" alt="管理员头像">
+            <img src="./images/timg.jpg" alt="管理员头像">
             <p>超级管理员</p>
         </div>
         <!-- 导航 -->
         <div class="nav">
             <ul>
-                <li><a href="user.html" > <span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
+                <li><a href="user.html"> <span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
                 <li>
                     <a href="JavaScript:;" class="category">
                         <span class="glyphicon glyphicon-list"></span>
@@ -57,8 +58,29 @@
                 <li><a href="#">分类系统</a></li>
                 <li class="active">一级分类</li>
             </ol>
+        </div>
+        <!-- 表格主体 -->
+        <div class="container-fluid">
+            <button class="btn btn-default btn_add">添加分类</button>
 
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>一级分类</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>哈哈哈</td>
+                    </tr> -->
+                </tbody>
+            </table>
 
+            <div class="text-right">
+                <ul class="pagintor"></ul>
+            </div>
 
         </div>
 
@@ -89,14 +111,47 @@
         </div>
     </div>
 
+    <!-- 添加一级分类 -->
+    <!-- 模态框 -->
+    <!-- Modal -->
+    <div class="modal fade" id="firstModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+                </div>
+                <form>
+                <div class="modal-body">
+                        <input type="text" class="form-control" name="categoryName" placeholder="请输入一级分类的名称">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary first_btn">确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/first.js"></script>
+
+    <script type="text/hmtl" id="first_tpl">
+        {{each rows v i}}
+            <tr>
+                <td>{{i+1}}</td>
+                <td>{{v.categoryName}}</td>
+            </tr>
+
+        {{/each}}
+    </script>
 </body>
 
 </html>
